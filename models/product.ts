@@ -23,6 +23,21 @@ const products = {
 
     },
 
+    // Get specific produtc
+    getSearchProduct: async function getSearchProduct(name: string) {
+        console.log("---| Get all products |---");
+        console.log("name");
+        console.log(name);
+
+        const response = await fetch(`${config.base_url}/products/search/${name}?api_key=${config.api_key}`);
+        const result = await response.json();
+
+        console.log(result.data);
+
+        return result.data
+
+    },
+
     // Update specific product
     updateProducts: async function updateProducts(product: Partial<OrderItem>) {
         console.log("Update Products (Products - order products)")
