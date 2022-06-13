@@ -7,6 +7,7 @@ import { Base } from './styles/index.js';
 import { useEffect, useState } from 'react';
 import FlashMessage from 'react-native-flash-message';
 
+import Stock from './components/stock/Stock';
 import Dashboard from './components/Dashboard';
 import Auth from "./components/auth/Auth";
 import authModel from "./models/auth";
@@ -62,7 +63,9 @@ export default function App() {
           <Tab.Screen name="Dashboard">
             {() => <Dashboard orders={orders} delivery={delivery} />}
           </Tab.Screen>
-          <Tab.Screen name="Stock" component={Dashboard} />
+          <Tab.Screen name="Stock">
+            {() => <Stock products={products} setProducts={setProducts} />}
+          </Tab.Screen>
           <Tab.Screen name="Pick" component={Dashboard} />
           <Tab.Screen name="Submissions" component={Dashboard} />
           <Tab.Screen name="Delivery" component={Dashboard} />
