@@ -6,7 +6,7 @@ import productsModel from './product';
 const orders = {
     // Get all orders
     getOrders: async function getOrders(): Promise<Order[]>{
-        console.log("------| Get orders |------");
+        console.log("------| Get all orders |------");
         const response = await fetch(`${config.base_url}/orders?api_key=${config.api_key}`);
         const result = await response.json();
 
@@ -20,7 +20,7 @@ const orders = {
 
         return result.data;
     },
-    // Pick a order
+    // Pick a order ( Kolla igenom denna )
     pickOrder: async function pickOrder(order: Partial<Order>) {
         console.log("------| Pick orders |------");
         console.log(order.order_items)
