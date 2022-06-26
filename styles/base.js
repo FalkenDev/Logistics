@@ -4,7 +4,7 @@ export const container = {
 
 export const base = {
     flex: 1,
-    backgroundColor: '#1D3557',
+    backgroundColor: 'white',
     paddingLeft: 12,
     paddingRight: 12,
 }
