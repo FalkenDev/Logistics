@@ -36,6 +36,7 @@ export default function StockList({ route, navigation, products, setProducts }) 
                 placeholder="Search here"
                 onPress={() => setSearchProducts(products)}
                 onChangeText={(text) => searchFunction(text)}
+                onClearPress={() => setSearchProducts(products)}
             />
             <View style={{marginLeft: "auto", marginRight: "auto"}}>
                 <View style={StockStyle.container}>
