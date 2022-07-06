@@ -10,6 +10,7 @@ import FlashMessage from 'react-native-flash-message';
 import Stock from './components/stock/Stock';
 import Dashboard from './components/Dashboard';
 import Auth from "./components/auth/Auth";
+import OrderView from "./components/order/Order";
 import authModel from "./models/auth";
 
 import Delivery from "./models/deliveries";
@@ -66,9 +67,15 @@ export default function App() {
           <Tab.Screen name="Stock">
             {() => <Stock products={products} setProducts={setProducts} />}
           </Tab.Screen>
-          <Tab.Screen name="Pick" component={Dashboard} />
-          <Tab.Screen name="Submissions" component={Dashboard} />
-          <Tab.Screen name="Delivery" component={Dashboard} />
+          <Tab.Screen name="Orders">
+            {() => <OrderView orders={orders} setOrders={setOrders} />}
+          </Tab.Screen>
+          <Tab.Screen name="Delivery">
+            {() => <Dashboard setIsLoggedIn={setIsLoggedIn} />}
+          </Tab.Screen>
+          <Tab.Screen name="Submissons">
+            {() => <Dashboard setIsLoggedIn={setIsLoggedIn} />}
+          </Tab.Screen>
           <Tab.Screen name="Invoices">
             {() => <Dashboard setIsLoggedIn={setIsLoggedIn} />}
           </Tab.Screen>
