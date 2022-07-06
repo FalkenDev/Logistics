@@ -41,6 +41,21 @@ const orders = {
         await orders.updateOrderStatus(order);
     },
 
+    // Search specific Order
+    getSearchOrder: async function getSearchOrder(name: string) {
+        console.log("---| Get all products |---");
+        console.log("name");
+        console.log(name);
+
+        const response = await fetch(`${config.base_url}/orders/search/${name}?api_key=${config.api_key}`);
+        const result = await response.json();
+
+        console.log(result.data);
+
+        return result.data
+
+    },
+
     // Update a order status
     updateOrderStatus: async function updateOrderStatus(order_info: Partial<Order>) {
         console.log("------| Update order |------");
