@@ -80,7 +80,7 @@ export default function OrderList({ route, navigation, orders, setOrders }) {
                     <DataTable.Title style={{flex: 1.1}}>ID</DataTable.Title>
                     <DataTable.Title style={{flex: 3}}>Name</DataTable.Title>
                     <DataTable.Title style={{flex: 1.4}}>Items</DataTable.Title>
-                    <DataTable.Title style={{flex: 1}}>Status</DataTable.Title>
+                    <DataTable.Title style={{flex: 1.5}}>Status</DataTable.Title>
                     <DataTable.Title style={{flex: 0.4}}></DataTable.Title>
                 </DataTable.Header>
             </DataTable>
@@ -95,7 +95,7 @@ export default function OrderList({ route, navigation, orders, setOrders }) {
                             <DataTable.Cell style={{flex: 3}}>{order.name}</DataTable.Cell>
                             <DataTable.Cell style={{flex: 1.4}}>{orderItemLength}</DataTable.Cell>
                             <View style={{...OrderStyle.statusBar, backgroundColor: statusBackgroundColor}}>
-                                <DataTable.Cell style={{flex: 1}}>
+                                <DataTable.Cell style={{flex: 1.5}}>
                                     <Text style={OrderStyle.statusBarText}>{statusName}</Text>
                                 </DataTable.Cell>
                             </View>
