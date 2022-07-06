@@ -11,9 +11,17 @@ export default function Order(props) {
                 {(screenProps) => <OrderList {...screenProps}
                 orders={props.orders} setOrders={props.setOrders}/>}
             </Stack.Screen>
-            <Stack.Screen name="Details">
+            <Stack.Screen name="Details" options={{headerStyle: {backgroundColor: 'white'}, headerTintColor: 'black', headerTitleStyle: {fontWeight: 'bold'}}}>
                 {(screenProps) => <OrderDetails {...screenProps}
                 setOrders={props.setOrders}/>}
+            </Stack.Screen>
+            <Stack.Screen name="Pick" options={{headerStyle: {backgroundColor: 'white'}, headerTintColor: 'black', headerTitleStyle: {fontWeight: 'bold'}}}>
+                {(screenProps) => <OrderList {...screenProps}
+                orders={props.orders} setOrders={props.setOrders}/>}
+            </Stack.Screen>
+            <Stack.Screen name="Cancel" options={{headerStyle: {backgroundColor: 'white'}, headerTintColor: 'black', headerTitleStyle: {fontWeight: 'bold'}}}>
+                {(screenProps) => <OrderList {...screenProps}
+                orders={props.orders} setOrders={props.setOrders}/>}
             </Stack.Screen>
         </Stack.Navigator>
     );
