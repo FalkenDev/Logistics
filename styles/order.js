@@ -49,7 +49,7 @@ export const circle = {
     width: 50,
     height: 50,
     borderRadius: 100,
-    backgroundColor: "#FF9393",
+    backgroundColor: "#B6CAFF",
     marginLeft: "auto",
     marginRight: "auto",
 };
