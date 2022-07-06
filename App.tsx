@@ -69,14 +69,9 @@ export default function App() {
           <Tab.Screen name="Pick" component={Dashboard} />
           <Tab.Screen name="Submissions" component={Dashboard} />
           <Tab.Screen name="Delivery" component={Dashboard} />
-          {isLoggedIn
-            ?<Tab.Screen name="Invoices">
-              {() => <Dashboard setIsLoggedIn={setIsLoggedIn} />}
-            </Tab.Screen>
-            :<Tab.Screen name="Login">
-              {() => <Auth setIsLoggedIn={setIsLoggedIn} />}
-            </Tab.Screen>
-          }
+          <Tab.Screen name="Invoices">
+            {() => <Dashboard setIsLoggedIn={setIsLoggedIn} />}
+          </Tab.Screen>
         </Tab.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
