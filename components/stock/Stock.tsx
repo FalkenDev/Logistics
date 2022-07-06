@@ -7,11 +7,14 @@ const Stack = createNativeStackNavigator();
 export default function Stock(props) {
     return (
         <Stack.Navigator initialRouteName="Stock">
-            <Stack.Screen name="Stock" options={{headerStyle: {backgroundColor: 'white'}, headerTintColor: 'black', headerTitleStyle: {fontWeight: 'bold'}}}>
+            <Stack.Screen name="List" options={{headerStyle: {backgroundColor: 'white'}, headerTintColor: 'black', headerTitleStyle: {fontWeight: 'bold'}}}>
                 {(screenProps) => <StockList {...screenProps}
                 products={props.products} setProducts={props.setProducts}/>}
             </Stack.Screen>
-            <Stack.Screen name="Details" component={Product} options={{headerStyle: {backgroundColor: 'white'}, headerTintColor: 'black', headerTitleStyle: {fontWeight: 'bold'}}}/>
+            <Stack.Screen name="Details">
+                {(screenProps) => <Product {...screenProps}
+                setProducts={props.setProducts}/>}
+            </Stack.Screen>
         </Stack.Navigator>
     );
 }
