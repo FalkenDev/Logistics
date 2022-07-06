@@ -11,8 +11,8 @@ export default function OrderList({ route, navigation, orders, setOrders }) {
     console.log("------| Loading Orders from Order |------")
     let ordersLength = orders.length;
     const [searchOrders, setSearchOrders] = useState([]);
-    const [statusBackgroundColor, setStatusBackgroundColor] = useState('#FF0000');
-    const [statusName, setStatusName] = useState('Error');
+    let statusBackgroundColor = '#FF0000';
+    let statusName ='Error';
 
     useEffect(() => {
         (async () => {
@@ -24,7 +24,6 @@ export default function OrderList({ route, navigation, orders, setOrders }) {
     let listOfSearchOrders;
 
     async function searchFunction(name: string) {
-        console.log(name);
         if(name === "") {
             setSearchOrders(orders);
         } else {
@@ -33,26 +32,24 @@ export default function OrderList({ route, navigation, orders, setOrders }) {
     }
 
     async function orderStatusFunction(orderStatus: number) {
-        console.log("OrderStatus");
-        console.log(orderStatus);
         if(orderStatus === 100) /* New */ {
-            setStatusBackgroundColor('#FCFF51');
-            setStatusName('New');
+            statusBackgroundColor = '#FCFF51';
+            statusName = 'New';
         } else if(orderStatus === 200) /* Packed */ {
-            setStatusBackgroundColor('#FF636C');
-            setStatusName('Packed');
+            statusBackgroundColor = '#FF636C';
+            statusName = 'Packed';
         } else if(orderStatus === 400) /* Sent */ {
-            setStatusBackgroundColor('#44FF4B');
-            setStatusName('Sent');
+            statusBackgroundColor = '#44FF4B';
+            statusName = 'Sent';
         } else if(orderStatus === 600) /* Invoiced */ {
-            setStatusBackgroundColor('#6951FF');
-            setStatusName('Invoiced');
+            statusBackgroundColor = '#6951FF';
+            statusName = 'Invoiced';
         } else if(orderStatus === 800) /* Return */ {
-            setStatusBackgroundColor('#49FFFF');
-            setStatusName('Return');
+            statusBackgroundColor = '#49FFFF';
+            statusName = 'Return';
         } else if(orderStatus === 900) /* Refunded */ {
-            setStatusBackgroundColor('#FF80DB');
-            setStatusName('Refunded');
+            statusBackgroundColor = '#FF80DB';
+            statusName = 'Refunded';
         }
     }
 
