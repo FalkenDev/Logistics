@@ -5,9 +5,10 @@ export const container = {
     alignItems: "center",
     marginTop: 20,
     lineHeight: 20,
-    backgroundColor: "#A8DADC",
+    backgroundColor: "#040C33",
     borderRadius: 20,
-    height: 100,
+    height: 80,
+    width: 350,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -19,11 +20,19 @@ export const container = {
     elevation: 8,
 };
 
+export const rectangle = {
+    width: 60,
+    height: 60,
+    backgroundColor: "#FF9393",
+    marginLeft: "auto",
+    marginRight: "auto",
+};
+
 export const circle = {
-    width: 80,
-    height: 80,
+    width: 50,
+    height: 50,
     borderRadius: 100,
-    backgroundColor: "#457B9D",
+    backgroundColor: "#FF9393",
     marginLeft: "auto",
     marginRight: "auto",
 };
@@ -40,22 +49,19 @@ export const stockContainerLogo = {
 };
 
 export const stockContainerText = {
-    width: "60%"
-};
-
-export const stockContainerArrow = {
-    width: "10%"
+    width: "70%"
 };
 
 export const textNumber = {
-    fontSize: 34,
+    fontSize: 30,
     fontWeight: 'bold',
     letterSpacing: 0.25,
-    color: 'black',
+    color: 'white',
 };
 
 export const textInfo = {
     fontSize: 16,
     letterSpacing: 0.25,
-    color: 'black',
+    color: 'white',
+    marginBottom: 7,
 };

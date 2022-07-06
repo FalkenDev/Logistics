@@ -3,7 +3,7 @@ export const container = {
     justifyContent: "flex-end",
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 15,
+    marginTop: 10,
     lineHeight: 10,
     backgroundColor: "#040C33",
     borderRadius: 20,
