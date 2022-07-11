@@ -69,7 +69,7 @@ export default function StockList({ route, navigation, products, setProducts }) 
                             <DataTable.Cell style={{flex: 1.4}}><View style={StockStyle.rectangle}><FontAwesome5 style={DashboardStyle.logo} name="box" size={30} color="white" /></View></DataTable.Cell>
                             <DataTable.Cell style={{flex: 1.3}}>{item.article_number}</DataTable.Cell>
                             <DataTable.Cell style={{flex: 1.8}}>{item.name}</DataTable.Cell>
-                            <DataTable.Cell style={{flex: 1}}>{item.stock}</DataTable.Cell>
+                            <DataTable.Cell style={{flex: 1}}>{item.amount}</DataTable.Cell>
                             <DataTable.Cell style={{flex: 0.4}}><MaterialIcons name="arrow-forward-ios" size={14} color="black" /></DataTable.Cell>
                         </DataTable.Row>
                     </Pressable>
