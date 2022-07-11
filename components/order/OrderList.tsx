@@ -77,11 +77,11 @@ export default function OrderList({ route, navigation, orders, setOrders }) {
             </View>
             <DataTable>
                 <DataTable.Header>
-                    <DataTable.Title style={{flex: 1.1}}>ID</DataTable.Title>
-                    <DataTable.Title style={{flex: 3}}>Name</DataTable.Title>
-                    <DataTable.Title style={{flex: 1.4}}>Items</DataTable.Title>
-                    <DataTable.Title style={{flex: 1.5}}>Status</DataTable.Title>
-                    <DataTable.Title style={{flex: 0.4}}></DataTable.Title>
+                    <DataTable.Title style={{flex: 1.1 }}>ID</DataTable.Title>
+                    <DataTable.Title style={{flex: 3 }}>Name</DataTable.Title>
+                    <DataTable.Title style={{flex: 1 }}>Items</DataTable.Title>
+                    <DataTable.Title style={{flex: 2 }}>Status</DataTable.Title>
+                    <DataTable.Title style={{flex: 0.4 }}></DataTable.Title>
                 </DataTable.Header>
             </DataTable>
             { listOfSearchOrders = searchOrders
@@ -90,16 +90,15 @@ export default function OrderList({ route, navigation, orders, setOrders }) {
                 orderStatusFunction(order.status_id);
                 return (
                     <Pressable key={index} onPress={() => { navigation.navigate('Details', {order: order}); }}>
-                        <DataTable.Row style={{height: 90}}>
-                            <DataTable.Cell style={{flex: 1.1}}><Text style={{color: "blue"}}>#{order.id}</Text></DataTable.Cell>
-                            <DataTable.Cell style={{flex: 3}}>{order.name}</DataTable.Cell>
-                            <DataTable.Cell style={{flex: 1.4}}>{orderItemLength}</DataTable.Cell>
-                            <View style={{...OrderStyle.statusBar, backgroundColor: statusBackgroundColor}}>
-                                <DataTable.Cell style={{flex: 1.5}}>
-                                    <Text style={OrderStyle.statusBarText}>{statusName}</Text>
-                                </DataTable.Cell>
-                            </View>
-                            <DataTable.Cell style={{flex: 0.4}}><MaterialIcons name="arrow-forward-ios" size={14} color="black" /></DataTable.Cell>
+                        <DataTable.Row style={{height: 90 }}>
+                            <DataTable.Cell style={{flex: 1.1 }}><Text style={{color: "blue"}}>#{order.id}</Text></DataTable.Cell>
+                            <DataTable.Cell style={{flex: 3 }}>{order.name}</DataTable.Cell>
+                            <DataTable.Cell style={{flex: 1 }}>{orderItemLength}</DataTable.Cell>
+                            <DataTable.Cell style={{flex: 2 }}>
+                                <View style={{width: 15, height: 15, backgroundColor: statusBackgroundColor, borderRadius: 100, borderWidth: 0.7, borderColor: "black"}}></View>
+                                <Text style={{color: "black" }}>  {statusName}</Text>
+                            </DataTable.Cell>
+                            <DataTable.Cell style={{flex: 0.4 }}><MaterialIcons name="arrow-forward-ios" size={14} color="black" /></DataTable.Cell>
                         </DataTable.Row>
                     </Pressable>
                 )
