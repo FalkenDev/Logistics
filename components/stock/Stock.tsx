@@ -15,6 +15,10 @@ export default function Stock(props) {
                 {(screenProps) => <Product {...screenProps}
                 setProducts={props.setProducts}/>}
             </Stack.Screen>
+            <Stack.Screen name="Edit">
+                {(screenProps) => <Product {...screenProps}
+                setProducts={props.setProducts}/>}
+            </Stack.Screen>
         </Stack.Navigator>
     );
 }
