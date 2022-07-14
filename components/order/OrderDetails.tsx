@@ -5,6 +5,7 @@ import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import backgroundImage from "../../assets/androidback.png"; //Byt ut
 import { DataTable } from 'react-native-paper';
 import orderModel from '../../models/orders';
+import Blink from '../../styles/blink'; // Blink function Not work well ATM
 
 export default function InfoList({ route, navigation, setProducts }) {
     console.log("Product Info");
@@ -30,6 +31,7 @@ export default function InfoList({ route, navigation, setProducts }) {
                     ?<View style={{width: "25%", backgroundColor: "#30FF1E", borderWidth: 2, borderColor: "white"}}></View>
                     :<View style={{width: "25%", backgroundColor: "#20241F", borderWidth: 2, borderColor: "white"}}></View>
                 }
+                
                 {order.status_id >= 400
                     ?<View style={{width: "25%", backgroundColor: "#30FF1E", borderWidth: 2, borderColor: "white"}}></View>
                     :<View style={{width: "25%", backgroundColor: "#20241F", borderWidth: 2, borderColor: "white"}}></View>
