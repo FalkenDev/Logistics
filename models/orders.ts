@@ -81,6 +81,35 @@ const orders = {
         request.send(json);
         return;
     },
+
+    orderStatusFunction: async function orderStatusFunction(orderStatus: number) {
+        let statusBackgroundColor;
+        let statusName;
+        if(orderStatus === 100) /* New */ {
+            statusBackgroundColor = '#FCFF51';
+            statusName = 'Accepted';
+        } else if(orderStatus === 200) /* Packed */ {
+            statusBackgroundColor = '#FF636C';
+            statusName = 'Packed';
+        } else if(orderStatus === 400) /* Sent */ {
+            statusBackgroundColor = '#44FF4B';
+            statusName = 'Sent';
+        } else if(orderStatus === 600) /* Invoiced */ {
+            statusBackgroundColor = '#6951FF';
+            statusName = 'Invoiced';
+        } else if(orderStatus === 800) /* Return */ {
+            statusBackgroundColor = '#49FFFF';
+            statusName = 'Return';
+        } else if(orderStatus === 900) /* Refunded */ {
+            statusBackgroundColor = '#FF80DB';
+            statusName = 'Refunded';
+        } else {
+            statusBackgroundColor = '#FF0000';
+            statusName = 'Error';
+        }
+
+        return [statusBackgroundColor, statusName];
+    },
 };
 
 export default orders;
