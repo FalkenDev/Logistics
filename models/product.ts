@@ -57,7 +57,30 @@ const products = {
         request.setRequestHeader('Content-type','application/json; charset=utf-8');
         request.send(json);
         return;
-    }
+    },
+
+    // Delete specific product
+    deleteProduct: async function deleteProduct(product: Partial<OrderItem>) {
+        console.log("------| Deleting Specific Product To API |------");
+        console.log(product);
+        function callbackFunction() {
+            console.log("------| Product has been deleted |------");
+        }
+
+        var productItem = {
+            id: product.id,
+            api_key: config.api_key
+        };
+
+        var json = JSON.stringify(productItem);
+
+        var request = new XMLHttpRequest();
+        request.addEventListener("load", callbackFunction);
+        request.open("DELETE", "https://lager.emilfolino.se/v2/products");
+        request.setRequestHeader('Content-type','application/json; charset=utf-8');
+        request.send(json);
+        return;
+    },
 }
 
 export default products;
