@@ -1,3 +1,11 @@
+// ----| Base for all |----
+
+// ----| OrderList |----
+
+// ----| OrderDetails |----
+
+// ----| Pick |----
+
 export const container = {
     flex: 1,
     justifyContent: "flex-end",
