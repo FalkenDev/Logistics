@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Animated, View } from "react-native";
+import { Animated, View,Text } from "react-native";
 
 export default class Blink extends Component {
     constructor(props) {
@@ -12,12 +12,17 @@ export default class Blink extends Component {
             Animated.sequence([
                 Animated.timing(this.fadeAnimation, {
                     toValue: 0,
-                    duration: this.props.duration,
+                    duration: 1000,
                     useNativeDriver: true,
                 }),
                 Animated.timing(this.fadeAnimation, {
                     toValue: 1,
-                    duration: this.props.duration,
+                    duration: 1000,
+                    useNativeDriver: true,
+                }),
+                Animated.timing(this.fadeAnimation, {
+                    toValue: 0,
+                    duration: 1000,
                     useNativeDriver: true,
                 })
             ])
@@ -26,11 +31,9 @@ export default class Blink extends Component {
 
     render() {
         return (
-            <View style={{...this.props.style}}>
-                <Animated.View style={{opacity: this.fadeAnimation }}>
+                <Animated.View style={{opacity: this.fadeAnimation, width: "25%", backgroundColor: "#FBF333", borderColor: "white"}}>
                     {this.props.children}
                 </Animated.View>
-            </View>
         )
     }
 }
