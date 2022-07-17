@@ -68,7 +68,7 @@ export default function App() {
             {() => <Stock products={products} setProducts={setProducts} />}
           </Tab.Screen>
           <Tab.Screen name="Orders">
-            {() => <OrderView orders={orders} setOrders={setOrders} />}
+            {() => <OrderView orders={orders} setOrders={setOrders} setProducts={setProducts} />}
           </Tab.Screen>
           <Tab.Screen name="Delivery">
             {() => <Dashboard setIsLoggedIn={setIsLoggedIn} />}
