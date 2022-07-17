@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { ImageBackground, ScrollView, Text, Button, StyleSheet, Pressable, View } from "react-native";
 import { Typography, Base, StockStyle, DashboardStyle } from '../../styles/index.js';
 import productModel from "../../models/product";
-import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
+import { FontAwesome5, MaterialIcons, Ionicons  } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import SearchBar from "react-native-dynamic-search-bar";
 import { DataTable } from 'react-native-paper';
@@ -12,10 +12,16 @@ export default function StockList({ route, navigation, products, setProducts }) 
     let productLength = products.length;
     const [searchProducts, setSearchProducts] = useState([]);
 
+    // Reload all the stations
+    async function reloadProducts() {
+        console.log("Loading");
+        setProducts(await productModel.getProducts());
+        setSearchProducts(await productModel.getProducts());
+    }
+
     useEffect(() => {
         (async () => {
-            setProducts(await productModel.getProducts());
-            setSearchProducts(products);
+            navigation.addListener('focus', () => reloadProducts());
         })();
     }, []);
 
@@ -76,6 +82,7 @@ export default function StockList({ route, navigation, products, setProducts }) 
                 )
             })
             }
+            <Pressable onPress={() => { navigation.navigate('Add'); }} style={{position: "absolute", bottom: "0%", right: 0}}><Ionicons name="ios-add-circle" size={60} color="#3FA3FF" /></Pressable>
         </ScrollView>
     );
 }
