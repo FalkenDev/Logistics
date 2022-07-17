@@ -1,6 +1,8 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import StockList from './StockList';
 import Product from './Product';
+import Edit from './EditProduct';
+import Add from './AddProduct';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,7 +18,11 @@ export default function Stock(props) {
                 setProducts={props.setProducts}/>}
             </Stack.Screen>
             <Stack.Screen name="Edit">
-                {(screenProps) => <Product {...screenProps}
+                {(screenProps) => <Edit {...screenProps}
+                setProducts={props.setProducts}/>}
+            </Stack.Screen>
+            <Stack.Screen name="Add">
+                {(screenProps) => <Add {...screenProps}
                 setProducts={props.setProducts}/>}
             </Stack.Screen>
         </Stack.Navigator>
