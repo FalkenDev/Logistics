@@ -14,10 +14,17 @@ export default function OrderList({ route, navigation, orders, setOrders }) {
     let statusBackgroundColor = '#FF0000';
     let statusName ='Error';
 
+    // Reload all orders and setSearchOrders as orders (standard)
+    async function reloadOrders() {
+        console.log("Loading");
+        setOrders(await orderModel.getOrders());
+        setSearchOrders(orders);
+    }
+
     useEffect(() => {
         (async () => {
-            setOrders(await orderModel.getOrders());
-            setSearchOrders(orders);
+            // Adding a focus ( When navigated to orders it auto reload)
+            navigation.addListener('focus', () => reloadOrders());
         })();
     }, []);
 
