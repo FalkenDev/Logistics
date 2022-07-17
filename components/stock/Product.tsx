@@ -1,14 +1,38 @@
-import { View, Text, Pressable, Image, ScrollView } from "react-native";
+import { View, Text, Pressable, Image, ScrollView, Alert, StyleSheet } from "react-native";
 import { useState, useEffect } from 'react';
 import { Base, Typography,DashboardStyle, StockStyle } from '../../styles/index.js';
 import backgroundImage from "../../assets/androidback.png"; //Byt ut
 import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import { header2 } from "../../styles/typography.js";
 import Stock from "./Stock.js";
+import productModel from '../../models/product'
 
 export default function InfoList({ route, navigation, setProducts }) {
     console.log("Product Info");
     const { item } = route.params;
+
+    
+    const removeAlert = () =>
+    Alert.alert(
+      "Remove Item",
+      "Are you sure?",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        },
+        { text: "Yes",
+            onPress: () => deleteProduct(),
+            style: "destructive",
+        }
+      ]
+    );
+
+    async function deleteProduct() {
+        await productModel.deleteProduct(item);
+        navigation.navigate("List", { reload: true });
+    }
 
     return (
         <ScrollView>
@@ -48,10 +72,10 @@ export default function InfoList({ route, navigation, setProducts }) {
                 <Text style={StockStyle.details_text_output}>${item.price}</Text>
             </View>
             <View>
-                <Pressable style={StockStyle.details_button_edit}>
+                <Pressable onPress={() => { navigation.navigate('Edit', {item: item}); }} style={StockStyle.details_button_edit}>
                     <Text style={StockStyle.details_button_text}>EDIT</Text>
                 </Pressable>
-                <Pressable style={StockStyle.details_button_remove}>
+                <Pressable onPress={removeAlert} style={StockStyle.details_button_remove}>
                     <Text style={StockStyle.details_button_text}>Remove Item</Text>
                 </Pressable>
             </View>
