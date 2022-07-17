@@ -82,3 +82,9 @@ export const textInfo = {
     color: 'white',
     marginBottom: 7,
 };
+
+export const details_statusTextView = {
+    flex: 1,
+    flexDirection: "row",
+    marginBottom: 20
+}
