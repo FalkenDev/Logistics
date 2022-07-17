@@ -1,12 +1,14 @@
 import { View, Text, Pressable, Image, ScrollView, Animated} from "react-native";
 import { useState, useEffect } from 'react';
-import { Base, Typography, DashboardStyle, StockStyle, OrderStyle } from '../../styles/index.js';
+import { DashboardStyle, StockStyle, OrderStyle } from '../../styles/index.js';
 import { FontAwesome5, MaterialIcons, Ionicons, Entypo, AntDesign } from '@expo/vector-icons';
-import backgroundImage from "../../assets/androidback.png"; //Byt ut
 import { DataTable } from 'react-native-paper';
 import orderModel from '../../models/orders';
 import Blink from '../../styles/blink'; // Blink function Not work well ATM
 import productModel from "../../models/product";
+
+// ----| TODO |----  
+// * Notifikation om det inte finns produkter på lager
 
 export default function InfoList({ route, navigation, setProducts }) {
     console.log("Product Info");
@@ -16,8 +18,6 @@ export default function InfoList({ route, navigation, setProducts }) {
     let orderItemLength = order.order_items.length;
 
     let orderStatusArray = orderModel.orderStatusFunction(order.status_id);
-    let statusBackgroundColor = orderStatusArray[0];
-    let statusName = orderStatusArray[1];
 
     async function pick() {
         order.status_id = 200;
@@ -62,6 +62,8 @@ export default function InfoList({ route, navigation, setProducts }) {
                     if (item.stock < item.amount) {
                         allInStock = false;
                     }
+
+                    console.log(item.stock);
                     return (
                         <Pressable key={index} onPress={() => { if(pressed) {setPressed(false); setAmountPressed(amountPressed - 1)} else{setPressed(true); setAmountPressed(amountPressed + 1)} }}>
                             <DataTable.Row style={{height: 90}}>
