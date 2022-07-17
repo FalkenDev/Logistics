@@ -1,6 +1,6 @@
-import { View, Text, Pressable, Image, ScrollView } from "react-native";
+import { View, Text, Pressable, Image, ScrollView, Animated} from "react-native";
 import { useState, useEffect } from 'react';
-import { Base, Typography, DashboardStyle, StockStyle } from '../../styles/index.js';
+import { Base, Typography, DashboardStyle, StockStyle, OrderStyle } from '../../styles/index.js';
 import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import backgroundImage from "../../assets/androidback.png"; //Byt ut
 import { DataTable } from 'react-native-paper';
@@ -15,7 +15,7 @@ export default function InfoList({ route, navigation, setProducts }) {
     let orderStatusArray = orderModel.orderStatusFunction(order.status_id);
     let statusBackgroundColor = orderStatusArray[0];
     let statusName = orderStatusArray[1];
-
+    
 
     return (
         <ScrollView style={{backgroundColor: "white"}}>
@@ -23,25 +23,25 @@ export default function InfoList({ route, navigation, setProducts }) {
                 <FontAwesome5 style={DashboardStyle.logo} name="box" size={60} color="white" />
             </View>
             <View style={{flex: 1, flexDirection: "row", height: 15}}>
-                {order.status_id >= 100
+                {order.status_id >= 100 // Accepted
                     ?<View style={{width: "25%", backgroundColor: "#30FF1E", borderWidth: 2, borderColor: "white"}}></View>
                     :<View style={{width: "25%", backgroundColor: "#20241F", borderWidth: 2, borderColor: "white"}}></View>
                 }
-                {order.status_id >= 200
+                {order.status_id >= 200 // Packed
                     ?<View style={{width: "25%", backgroundColor: "#30FF1E", borderWidth: 2, borderColor: "white"}}></View>
                     :<View style={{width: "25%", backgroundColor: "#20241F", borderWidth: 2, borderColor: "white"}}></View>
                 }
                 
-                {order.status_id >= 400
+                {order.status_id >= 400 // Sent
                     ?<View style={{width: "25%", backgroundColor: "#30FF1E", borderWidth: 2, borderColor: "white"}}></View>
                     :<View style={{width: "25%", backgroundColor: "#20241F", borderWidth: 2, borderColor: "white"}}></View>
                 }
-                {order.status_id >= 600
+                {order.status_id >= 600 // Delivered
                     ?<View style={{width: "25%", backgroundColor: "#30FF1E", borderWidth: 2, borderColor: "white"}}></View>
                     :<View style={{width: "25%", backgroundColor: "#20241F", borderWidth: 2, borderColor: "white"}}></View>
                 }
             </View>
-            <View style={{flex: 1, flexDirection: "row", marginBottom: 20}}>
+            <View  style={OrderStyle.details_statusTextView}>
                 <Text style={{width: "25%", textAlign: "center"}}>Accepted</Text>
                 <Text style={{width: "25%", textAlign: "center"}}>Packed</Text>
                 <Text style={{width: "25%", textAlign: "center"}}>Sent</Text>
@@ -98,7 +98,7 @@ export default function InfoList({ route, navigation, setProducts }) {
             </View>
             <View style={{display: "flex"}}>
                 {order.status_id < 200
-                    ?<Pressable style={StockStyle.details_button_edit}><Text style={StockStyle.details_button_text}>Pick</Text></Pressable>
+                    ?<Pressable onPress={() => { navigation.navigate('Pick', { order: order }); }} style={StockStyle.details_button_edit}><Text style={StockStyle.details_button_text}>Pick</Text></Pressable>
                     :<Text></Text>
                 }
                 <Pressable style={StockStyle.details_button_edit}><Text style={StockStyle.details_button_text}>Cancel order</Text></Pressable>
